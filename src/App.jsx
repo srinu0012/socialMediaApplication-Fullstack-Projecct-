@@ -19,7 +19,7 @@ const[islogin,setislogin]=useState(false)
          <Routes>
         <Route path="/" element={<Login/>}></Route>
         <Route path="/Home" element={<Home/>}></Route>
-        <Route path="/profile" element={<Profile/>}></Route>
+        <Route path="/Home/profile" element={<Profile/>}></Route>
       </Routes>
       
       

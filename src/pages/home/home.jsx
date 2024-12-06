@@ -5,21 +5,39 @@ import Sidebar from "../../components/sidebar/sidebar";
 import Feed from "../../components/feed/feed";
 import Rightbar from "../../components/rightbar/rightbar";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Home(){
+
+    const [profileimage,setprofileimage]=useState("https://th.bing.com/th?id=OIP.0g9t2RRpr0rhAKaJPbQriQHaHk&w=247&h=252&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2")
     
     const istoken=localStorage.getItem('token')
     const navigate = useNavigate()
     useEffect(()=>{
         if(!istoken) {navigate("/") }
+        else{
+            async function getHomeProfileImage(params) {
+                let x= await axios.get(`http://localhost:3300/profileImages/${istoken}`)
+                const {image_url}=x.data.find((val)=>val.image_type==="profile")
+                if(image_url){
+                    setprofileimage(image_url)
+                }
+               
+            }
+            getHomeProfileImage()
+        }
+
+
     },[])
+
+   
     
     return(<>
-    <Topbar/>
+    <Topbar image_url={profileimage}/>
     <div className="homeContainer">
         <Sidebar />
-        <Feed />
+        <Feed image_url={profileimage} />
         <Rightbar/>
     </div>
    

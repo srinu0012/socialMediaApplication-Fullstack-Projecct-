@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import Post from "../posts/post";
 import Share from "../share/share";
-import "./feed.css";
+import "./profilepost.css";
 import axios from "axios";
 
-function Feed({ image_url }) {
+function ProfileFeed({image_url}) {
   const [posts, setPosts] = useState([]);
 
   // Fetch posts from the backend on component mount
@@ -14,7 +14,7 @@ function Feed({ image_url }) {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get("http://localhost:3300/posts"); // Replace with your API URL
+      const response = await axios.get(`http://localhost:3300/Profileposts/${localStorage.getItem("token")}`); // Replace with your API URL
       setPosts(response.data);
     } catch (error) {
       console.error("Error fetching posts:", error);
@@ -32,20 +32,17 @@ function Feed({ image_url }) {
 
   return (
     <div className="feed">
-      <div className="feedWrapper">
-
-        
+      <div className="feedWrapper" >
         {/* Share Component for adding a new post */}
-        <Share image_url={image_url} onNewPost={handleNewPost} key={555}/>
+        <Share image_url={image_url} onNewPost={handleNewPost} />
 
         {/* Render Posts */}
         {posts?.map((val,ind) => (
           <Post key={ind} post={val} />
         ))}
-      
       </div>
     </div>
   );
 }
 
-export default Feed;
+export default ProfileFeed;

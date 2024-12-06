@@ -1,72 +1,99 @@
-.sideBar{
+.sideBar {
     flex: 3;
     height: calc(100vh - 50px);
-   overflow-y: scroll;
-}
-.sidebarWraper{
+    overflow-y: scroll;
+    position: relative;
+  }
+  
+  .sidebarWraper {
     padding: 20px;
-    
-}
-::-webkit-scrollbar{
-    width: 5px;
-}
-::-webkit-scrollbar-track{
-   background-color: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb{
-    background-color: rgb(179, 179,179);
-}
-
-.sidebarList{
+  }
+  
+  .sidebarList {
     padding: 0;
     margin: 0;
     list-style: none;
-}
-
-.sidebarListItem{
+  }
+  
+  .sidebarListItem {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.sidebarIcon{
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebarListItem:hover {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+  }
+  
+  .sidebarIcon {
     margin-right: 15px;
+  }
+  
+  .sidebarLIstItemText {
     cursor: pointer;
-}
-
-.sidebarLIstItemText{
-    cursor: pointer;
-}
-
-.sidebarButton{
+  }
+  
+  .sidebarButton {
     width: 150px;
     border: none;
     padding: 10px;
     border-radius: 5px;
     font-weight: 700;
     cursor: pointer;
-
-}
-.sidebarHr{
+    color: orangered;
+  }
+  
+  .sidebarButton:hover {
+    background-color: #ccc;
+  }
+  
+  .sidebarHr {
     margin: 20px 0;
-}
-.sidebarFriendList{
+  }
+  
+  .sidebarFriendList {
     padding: 0;
     margin: 0;
     list-style: none;
-}
-
-.sidebarFriend{
+  }
+  
+  .sidebarFriend {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-}
-
-.sidebarFriendImg{
+  }
+  
+  .sidebarFriendImg {
     width: 32px;
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
-}
+  }
+  
+  /* Scroll to top button */
+  .scrollTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .scrollTopBtn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Active Item Highlight */
+  .sidebarListItem.active {
+    background-color: #dbe4e4;
+    border-radius: 5px;
+  }
+  
