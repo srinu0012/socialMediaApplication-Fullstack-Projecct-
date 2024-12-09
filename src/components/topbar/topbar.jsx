@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import "./topbar.css";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
@@ -6,21 +6,34 @@ import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import { Link, useNavigate } from "react-router-dom";
 import Chatapp from "../chat/chat.jsx";
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
-function Topbar({ image_url }) {
+function Topbar({ image_url,search }) {
   const navigate = useNavigate();
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); // For hanamburger menu
+
+
 
   const chatUsers = [
     { name: "John Doe", profileImage: "https://www.pixelstalk.net/wp-content/uploads/2016/07/Background-Beautiful-Nature-Images-HD.jpg" },
     { name: "Jane Smith", profileImage: "https://www.pixelstalk.net/wp-content/uploads/2016/07/Background-Beautiful-Nature-Images-HD.jpg" },
   ];
 
+function handleSerach(e){
+  search(e.target.value)
+}
+
+
   const profileShow = () => {
     const token = localStorage.getItem("token");
     if (token) {
       navigate("/Home/profile");
+    } else {
+      alert("Please log in first.");
+      navigate("/"); // Redirect to login if no token
     }
   };
 
@@ -41,10 +54,18 @@ function Topbar({ image_url }) {
     setShowLogoutConfirm(false);
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className="topbarContainer">
       <div className="topbarleft">
-        <span className="topbarlogo">imagelogo</span>
+        
+        <div className="hamburger" onClick={toggleMenu}>
+          <MenuIcon />
+        </div>
+        <div className="topbarlogo" >phtolio</div>
       </div>
       <div className="topbarcenter">
         <div className="searchbar">
@@ -53,16 +74,16 @@ function Topbar({ image_url }) {
             type="text"
             className="searchInput"
             placeholder="search for a post or video"
+
+            onChange={handleSerach}
           />
         </div>
+        
+          <Link to="/Home" className="TopbarmenuLink">Home</Link>
+
+        
       </div>
       <div className="topbarrigth">
-        <div className="topbarLinks">
-          <span className="topbarLink">
-            <Link to={"/Home"} className="link">Home</Link>
-          </span>
-          <span className="topbarLink">Timeline</span>
-        </div>
         <div className="topbarIcon">
           <div className="topbarIconItem">
             <PersonIcon />
@@ -79,13 +100,18 @@ function Topbar({ image_url }) {
           <img
             onClick={profileShow}
             src={image_url}
-            alt="Profile"
+            alt="User Profile"
             className="topbarImage"
+
           />
           <button onClick={confirmLogout} className="logoutButton">Logout</button>
         </div>
       </div>
+
       {/* Chat Component */}
+      {isChatOpen && (
+        <div className="chatBackdrop" onClick={toggleChat}></div>
+      )}
       {isChatOpen && (
         <Chatapp
           className={isChatOpen ? "open" : ""}
@@ -101,6 +127,24 @@ function Topbar({ image_url }) {
             <p>Are you sure you want to logout?</p>
             <button onClick={logoutHandler} className="confirmButton">Yes</button>
             <button onClick={cancelLogout} className="cancelButton">No</button>
+          </div>
+        </div>
+      )}
+
+      {/* Menu for mobile view */}
+      {menuOpen && (
+        <div className="menuOverlay">
+          <div className="menuContent">
+            <div className="closeMenu" onClick={toggleMenu}>
+              <CloseIcon />
+            </div>
+            <div className="menuLinks">
+              <Link to="/Home" className="menuLink" onClick={toggleMenu}>Home</Link>
+              <Link to="/Timeline" className="menuLink" onClick={toggleMenu}>Timeline</Link>
+              <Link to="/Home/Profile" className="menuLink"> Profile</Link>
+              <p onClick={toggleChat}>Chat</p>
+              <button onClick={logoutHandler} className="menuLink">Logout</button>
+            </div>
           </div>
         </div>
       )}

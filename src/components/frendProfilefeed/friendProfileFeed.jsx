@@ -1,30 +1,25 @@
 import { useState, useEffect } from "react";
 import Post from "../posts/post";
 import Share from "../share/share";
-import "./profilepost.css";
+import "./friendprofilefeed.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function ProfileFeed({image_url}) {
+function FriendProfileFeed() {
+
+   let {id}= useParams(null)
   const [posts, setPosts] = useState([]);
-
-
-  let navigate=useNavigate()
-
-  const isToken=localStorage.getItem("token")
-
-
 
   // Fetch posts from the backend on component mount
   useEffect(() => {
-    if(!isToken)navigate("/") 
     fetchPosts();
   }, []);
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get(`http://localhost:3300/Profileposts/${localStorage.getItem("token")}`); // Replace with your API URL
+      const response = await axios.get(`http://localhost:3300/FriendProfileposts/${id}`); // Replace with your API URL
       setPosts(response.data);
+
     } catch (error) {
       console.error("Error fetching posts:", error);
     }
@@ -40,15 +35,8 @@ function ProfileFeed({image_url}) {
   };
 
   return (
-
-
-
     <div className="feed">
       <div className="feedWrapper" >
-        {/* Share Component for adding a new post */}
-        <Share image_url={image_url} onNewPost={handleNewPost} />
-
-        {/* Render Posts */}
         {posts?.map((val,ind) => (
           <Post key={ind} post={val} />
         ))}
@@ -57,4 +45,4 @@ function ProfileFeed({image_url}) {
   );
 }
 
-export default ProfileFeed;
+export default FriendProfileFeed;

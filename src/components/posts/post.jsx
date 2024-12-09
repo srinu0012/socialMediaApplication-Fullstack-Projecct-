@@ -6,6 +6,7 @@ import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined"; // 
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import "./post.css";
+import { Link } from "react-router-dom";
 
 function Post({ post }) {
   const [like, setLike] = useState(post.likes);
@@ -16,7 +17,6 @@ function Post({ post }) {
   const [newComment, setNewComment] = useState("");
   const [feeling, setFeeling] = useState(post.feeling || ""); // Default feeling can be empty or based on the post
   const [location, setLocation] = useState(post.location || ""); // Default location can be empty or based on the post
-
   // Fetch comments for the post
   useEffect(() => {
     if (showComments) {
@@ -72,7 +72,9 @@ function Post({ post }) {
         {/* Post Top */}
         <div className="postTop">
           <div className="postTopLeft">
+          <Link to={`/friends/${post.user_id}`}>
             <img src={post.profile_image_url} className="postProfileImage" alt="profile" />
+            </Link>
             <span className="postUserName">{post.user_name}</span>
             <span className="postDate">{post.time}</span>
           </div>

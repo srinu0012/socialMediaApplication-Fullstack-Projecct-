@@ -87,4 +87,18 @@
     padding: 10px;
 }
 
+@media screen and (max-width:767px){
+    .rightbar{
+        display: none;
+    }
+}
+
+@media screen and (max-width:900px){
+    .rightbar{
+        display: none;
+    }
+}
+
+
+
 

@@ -67,19 +67,18 @@ function loginsubmit(e){
         "userName":e.target[0].value,
         "password":e.target[1].value
     })
-    console.log(data.data)
 
-   if(data.data){
-   
+   if(data.data!="invalid credentials"){
     localStorage.setItem('token', data.data);
 
-    // adding sucess styles
-    loginError.current.classList="registersuccess"
-    loginError.current.innerText="loginsucess"
+   
     const token=localStorage.getItem('token')
+ 
     if(token){
       navigate("/Home")
     }
+   }else{
+    loginError.current.innerText=data.data
    }
 
     }catch(err){

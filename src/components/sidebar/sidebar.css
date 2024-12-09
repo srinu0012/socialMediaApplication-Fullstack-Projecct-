@@ -97,3 +97,14 @@
     border-radius: 5px;
   }
   
+
+  @media screen and (min-width:567px)and (max-width:767px) {
+    .sideBar{
+      display: none;
+    }
+ }
+ @media screen and (max-width:580px) {
+  .sideBar{
+    display: none;
+  }
+}

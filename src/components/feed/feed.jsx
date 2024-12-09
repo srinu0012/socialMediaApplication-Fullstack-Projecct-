@@ -3,14 +3,33 @@ import Post from "../posts/post";
 import Share from "../share/share";
 import "./feed.css";
 import axios from "axios";
+import { red } from "@mui/material/colors";
 
-function Feed({ image_url }) {
+function Feed({ image_url,search }) {
   const [posts, setPosts] = useState([]);
+  useEffect(()=>{
+    fetchPosts()
+  },[])
 
-  // Fetch posts from the backend on component mount
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+  useEffect( ()=>{
+
+    if(!search){
+      fetchPosts()
+    }else{
+      let filterdata=posts.filter((val)=>{
+      
+         return val.post_text?.includes(search)
+      })
+        setPosts(filterdata)
+      
+      
+    }
+   
+  },[search])
+
+ 
+
+
 
   const fetchPosts = async () => {
     try {
@@ -31,17 +50,18 @@ function Feed({ image_url }) {
   };
 
   return (
-    <div className="feed">
+    <div className="feed" >
       <div className="feedWrapper">
 
         
         {/* Share Component for adding a new post */}
         <Share image_url={image_url} onNewPost={handleNewPost} key={555}/>
-
+       
         {/* Render Posts */}
         {posts?.map((val,ind) => (
           <Post key={ind} post={val} />
         ))}
+
       
       </div>
     </div>

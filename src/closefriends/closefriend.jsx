@@ -4,8 +4,8 @@ function Closefriend({data}){
 
     return(
         <li className="sidebarFriend">
-                <img className="sidebarFriendImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRofOsczOcTet5ATRvcDwCjgi-PkZWGIdh-Ew&s" alt="img" />
-                <span className="sidebarFriendName">{data}</span>
+                <img className="sidebarFriendImg" src={data.profile_image} alt="img" />
+                <span className="sidebarFriendName">{data.user_name}</span>
         </li>  
     )
 }

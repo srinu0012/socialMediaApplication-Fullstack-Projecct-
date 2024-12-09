@@ -1,216 +1,373 @@
+/* Global Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Topbar Container */
 .topbarContainer {
-    width: 100%;
-    height: 60px; /* Slightly taller for better spacing */
-    background-color: #1877f2;
-    display: flex;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  }
-  
-  .topbarlogo {
-    font-size: 24px;
-    margin-left: 20px;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .searchbar {
-    width: 100%;
-    max-width: 500px;
-    height: 40px; /* Increased for usability */
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    border-radius: 20px;
-    padding: 0 1em;
-    margin-left: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  }
-  
-  .searchIcon {
-    font-size: 24px !important;
-    color: #555;
-  }
-  
-  .searchInput {
-    border: none;
-    width: 90%;
-    outline: none;
-    font-size: 16px;
-    margin-left: 8px;
-  }
-  
-  .topbarleft {
-    flex: 3;
-  }
-  
-  .topbarcenter {
-    flex: 5;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .topbarrigth {
-    flex: 4;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    color: #fff;
-  }
-  
-  .topbarLink {
-    margin-left: 10px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  .topbarLink:hover {
-    color: #ddd;
-  }
-  
-  .link {
-    text-decoration: none;
-    color: #fff;
-  }
-  
-  .topbarIcon {
-    display: flex;
-  }
-  
-  .topbarIconItem {
-    margin-left: 15px;
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-  }
-  
-  .topbarIconItem:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-  }
-  
-  .topbarIconBadge {
-    width: 16px;
-    height: 16px;
-    background-color: red;
-    border-radius: 50%;
-    color: #fff;
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .topbarImage {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
-    margin-left: 10px;
-    border: 2px solid white;
-  }
-  
-  .logoutButton {
-    background-color: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .logoutButton:hover {
-    background-color: #fff;
-    color: #1877f2;
-  }
-  
-  /* Logout Confirmation Modal */
+   width: 100vw;
+   height: 60px;
+   background-color: #1877f2;
+   display: flex;
+   align-items: center;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.topbarlogo {
+   font-size: 24px;
+   margin-left: 20px;
+   font-weight: bold;
+   color: #fff;
+   cursor: pointer;
+}
+
+/* Search Bar */
+.searchbar {
+   width: 100%;
+   max-width: 500px;
+   height: 40px;
+   background-color: #fff;
+   display: flex;
+   align-items: center;
+   border-radius: 20px;
+   padding: 0 1em;
+   margin-left: 20px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.searchIcon {
+   font-size: 24px !important;
+   color: #555;
+}
+
+.searchInput {
+   border: none;
+   width: 90%;
+   outline: none;
+   font-size: 16px;
+   margin-left: 8px;
+}
+
+/* Layout */
+.topbarleft {
+   flex: 3;
+}
+
+.topbarcenter {
+   flex: 5;
+   display: flex;
+   justify-content: center;
+}
+
+.topbarrigth {
+   flex: 4;
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   color: #fff;
+}
+
+/* Links */
+.topbarLink {
+   margin-left: 10px;
+   cursor: pointer;
+   font-weight: 500;
+   transition: color 0.3s ease;
+}
+
+.topbarLink:hover {
+   color: #ddd;
+}
+
+.link {
+   text-decoration: none;
+   color: #fff;
+}
+
+/* Icons */
+.topbarIcon {
+   display: flex;
+}
+
+.topbarIconItem {
+   margin-left: 15px;
+   cursor: pointer;
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 36px;
+   height: 36px;
+   background-color: rgba(255, 255, 255, 0.2);
+   border-radius: 50%;
+   transition: background-color 0.3s ease;
+}
+
+.topbarIconItem:hover {
+   background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Badge */
+.topbarIconBadge {
+   width: 16px;
+   height: 16px;
+   background-color: red;
+   border-radius: 50%;
+   color: #fff;
+   position: absolute;
+   top: -5px;
+   right: -5px;
+   font-size: 12px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+/* Profile Image */
+.topbarImage {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   object-fit: cover;
+   cursor: pointer;
+   margin-left: 10px;
+   border: 2px solid white;
+}
+
+/* Logout Button */
+.logoutButton{
+   background-color: transparent;
+   margin-left: 20px;
+   border: 2px solid #fff;
+   color: #fff;
+   padding: 8px 16px;
+   border-radius: 20px;
+   font-size: 14px;
+   cursor: pointer;
+
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logoutButton:hover {
+   background-color: #fff;
+   color: #1877f2;
+}
+
+/* Logout Confirmation Modal */
 .logoutConfirmModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100; /* Ensures it appears above other elements */
-  }
-  
-  .logoutConfirmContent {
-    width: 300px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Drop shadow for depth */
-    text-align: center;
-    animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in effect */
-  }
-  
-  .logoutConfirmContent p {
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: #333;
-    font-weight: 500;
-  }
-  
-  .confirmButton,
-  .cancelButton {
-    padding: 10px 20px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    margin: 0 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .confirmButton {
-    background-color: #d9534f;
-    color: #fff;
-  }
-  
-  .confirmButton:hover {
-    background-color: #c9302c;
-  }
-  
-  .cancelButton {
-    background-color: #f8f9fa;
-    color: #333;
-    border: 1px solid #ddd;
-  }
-  
-  .cancelButton:hover {
-    background-color: #e2e6ea;
-  }
-  
-  /* Fade-in Animation */
-  @keyframes fadeIn {
-    from {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: rgba(0, 0, 0, 0.5);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 100;
+}
+
+.logoutConfirmContent {
+   width: 300px;
+   padding: 20px;
+   background-color: #fff;
+   border-radius: 10px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+   text-align: center;
+   animation: fadeIn 0.3s ease-in-out;
+}
+
+.logoutConfirmContent p {
+   font-size: 16px;
+   margin-bottom: 20px;
+   color: #333;
+   font-weight: 500;
+}
+
+.confirmButton,
+.cancelButton {
+   padding: 10px 20px;
+   font-size: 14px;
+   border-radius: 5px;
+   border: none;
+   cursor: pointer;
+   margin: 0 5px;
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.confirmButton {
+   background-color: #d9534f;
+   color: #fff;
+}
+
+.confirmButton:hover {
+   background-color: #c9302c;
+}
+
+.cancelButton {
+   background-color: #f8f9fa;
+   color: #333;
+   border: 1px solid #ddd;
+}
+
+.cancelButton:hover {
+   background-color: #e2e6ea;
+}
+
+.topbarcenter{
+  display: flex;
+  align-items: center;
+  gap: 25px;
+     }
+.TopbarmenuLink{
+      font-size: 18px;
+    text-decoration: none;
+    color: #f1f1f1;
+    transition: color 0.3s ease;
+    display: block;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+   from {
       opacity: 0;
       transform: scale(0.9);
-    }
-    to {
+   }
+   to {
       opacity: 1;
       transform: scale(1);
-    }
+   }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+
+   .topbarContainer{
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+      /* height: auto; */
+      padding: 10px;
+   }
+
+   .topbarleft,
+   .topbarcenter,
+   .topbarrigth {
+      flex: 1;
+      justify-content: center;
+      margin-bottom: 10px;
+   }
+   .topbarleft{
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+   }
+
+
+   .searchbar {
+      width: 100%;
+      margin-left: 0;
+   }
+
+   .topbarLogo{
+      font-size: 20px;
+     
+   }
+   .TopbarmenuLink{
+    display: none;
+   }
+   
+   .topbarIconItem {
+      width: 30px;
+      height: 30px;
+   }
+
+   .logoutButton {
+      font-size: 12px;
+   }
+}
+
+
+/* Add this at the end of your existing CSS */
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  color: white;
+
+}
+
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 100;
+}
+
+.menuContent {
+  background-color: white;
+  width: 250px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.closeMenu {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 30px;
+  cursor: pointer;
+  color: #1877f2;
+}
+
+.menuLinks {
+  margin-top: 30px;
+}
+
+.menuLink {
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+.menuLink:hover {
+  color: #1877f2;
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .topbarrigth {
+    display: none; /* Hide right side links on mobile */
   }
+
+  .hamburger {
+    display: block;
+   
+  }
+
   
+}
