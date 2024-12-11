@@ -99,7 +99,7 @@ function handleSerach(e){
           </div>
           <img
             onClick={profileShow}
-            src={image_url}
+            src={image_url?image_url:"https://www.pixelstalk.net/wp-content/uploads/2016/07/Background-Beautiful-Nature-Images-HD.jpg"}
             alt="User Profile"
             className="topbarImage"
 

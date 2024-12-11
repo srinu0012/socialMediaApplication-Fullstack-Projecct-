@@ -41,7 +41,7 @@ const handleImageUpload = async (e, type) => {
   formData.append("token", token);
 
   try {
-    const response = await fetch("http://localhost:3300/upload", {
+    const response = await fetch("https://myscocialmedia-node-js-mysql2.onrender.com/upload", {
       method: "POST",
       body: formData,
     });
@@ -64,7 +64,7 @@ const handleImageUpload = async (e, type) => {
   // Fetch profile info (name and description)
   async function getProfileInfo() {
     try {
-      const response = await axios.get(`http://localhost:3300/profileInfo/${token}`);
+      const response = await axios.get(`https://myscocialmedia-node-js-mysql2.onrender.com/profileInfo/${token}`);
       const { user_name, description } = response.data[0];
       setProfileName(user_name || "");
       setProfileDesc(description || "");
@@ -76,7 +76,7 @@ const handleImageUpload = async (e, type) => {
   // Fetch profile images
   async function getProfileImages() {
     try {
-      const response = await axios.get(`http://localhost:3300/profileImages/${token}`);
+      const response = await axios.get(`https://myscocialmedia-node-js-mysql2.onrender.com/profileImages/${token}`);
       response.data.forEach((val) => {
         if (val.image_type === "cover") {
           setCoverImage(val.image_url);
@@ -92,7 +92,7 @@ const handleImageUpload = async (e, type) => {
   // Save updated profile info
   const saveProfileInfo = async () => {
     try {
-      await axios.post("http://localhost:3300/updateProfileInfo", {
+      await axios.post("https://myscocialmedia-node-js-mysql2.onrender.com/updateProfileInfo", {
         token,
         name: newName,
         description: newDesc,

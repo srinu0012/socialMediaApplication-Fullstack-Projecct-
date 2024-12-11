@@ -26,7 +26,7 @@ let ispassvalid=e.target[2].value===e.target[3].value
 if(isvalidEmail && ispassvalid){
   async function registration(){
     try{
-      let x= await axios.post("http://localhost:3300/register",{
+      let x= await axios.post("https://myscocialmedia-node-js-mysql2.onrender.com/register",{
         "userName":e.target[0].value,
         "email":e.target[1].value,
         "password":e.target[2].value
@@ -63,7 +63,7 @@ function loginsubmit(e){
   async function getdetails(params) {
     
     try{
-      let data= await axios.post("http://localhost:3300/login",{
+      let data= await axios.post("https://myscocialmedia-node-js-mysql2.onrender.com/login",{
         "userName":e.target[0].value,
         "password":e.target[1].value
     })

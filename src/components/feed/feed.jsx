@@ -16,11 +16,16 @@ function Feed({ image_url,search }) {
     if(!search){
       fetchPosts()
     }else{
-      let filterdata=posts.filter((val)=>{
+      if(posts.length>0){
+        var filterdata=posts.filter((val)=>{
       
-         return val.post_text?.includes(search)
-      })
-        setPosts(filterdata)
+          return val.post_text?.includes(search)
+          
+       })
+       setPosts(filterdata)
+      }
+     
+        
       
       
     }
@@ -33,7 +38,8 @@ function Feed({ image_url,search }) {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get("http://localhost:3300/posts"); // Replace with your API URL
+      const response = await axios.get("https://myscocialmedia-node-js-mysql2.onrender.com/posts"); // Replace with your API URL
+       
       setPosts(response.data);
     } catch (error) {
       console.error("Error fetching posts:", error);
@@ -42,7 +48,7 @@ function Feed({ image_url,search }) {
 
   const handleNewPost = async (newPost) => {
     try {
-      const response = await axios.post("http://localhost:3300/posts", newPost); // Replace with your API URL
+      const response = await axios.post("https://myscocialmedia-node-js-mysql2.onrender.com/posts", newPost); // Replace with your API URL
       setPosts((prevPosts) => [response.data, ...prevPosts]); // Add the new post to the top of the list
     } catch (error) {
       console.error("Error adding new post:", error);
@@ -58,7 +64,7 @@ function Feed({ image_url,search }) {
         <Share image_url={image_url} onNewPost={handleNewPost} key={555}/>
        
         {/* Render Posts */}
-        {posts?.map((val,ind) => (
+        { posts.map((val,ind) => (
           <Post key={ind} post={val} />
         ))}
 

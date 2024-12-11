@@ -18,3 +18,26 @@ body{
 #root{
   width: 100vw;
 }
+
+
+/* Hide scrollbar for all browsers */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* For Edge and Chrome */
+

@@ -1,6 +1,5 @@
 .feed{
-    /* flex:5.5; */
-    /* flex-grow: 8; */
+    flex:5.5;
     width: 75%;
 }
 .feedWrapper{

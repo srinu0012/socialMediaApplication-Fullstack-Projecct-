@@ -21,7 +21,7 @@ function Home(){
         if(!istoken) {navigate("/") }
         else{
             async function getHomeProfileImage(params) {
-                let x= await axios.get(`http://localhost:3300/profileImages/${istoken}`)
+                let x= await axios.get(`https://myscocialmedia-node-js-mysql2.onrender.com/profileImages/${istoken}`)
                 const {image_url}=x.data.find((val)=>val.image_type==="profile")
                 if(image_url){
                     setprofileimage(image_url)

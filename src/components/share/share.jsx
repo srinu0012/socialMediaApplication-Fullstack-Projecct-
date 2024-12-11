@@ -70,7 +70,7 @@ function Share({ image_url }) {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post("http://localhost:3300/addPost", formData, {
+      const response = await axios.post("https://myscocialmedia-node-js-mysql2.onrender.com/addPost", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -101,7 +101,7 @@ function Share({ image_url }) {
     }
     setIsLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3300/searchUsernames?query=${query}`);
+      const response = await axios.get(`https://myscocialmedia-node-js-mysql2.onrender.com/searchUsernames?query=${query}`);
       setSuggestions(response.data || []);
     } catch (error) {
       console.error("Error fetching suggestions:", error);

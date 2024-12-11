@@ -36,7 +36,7 @@ const {id}=useParams()
   // Fetch profile info (name and description)
   async function getProfileInfo() {
     try {
-      const response = await axios.get(`http://localhost:3300/friendProfileInfo/${id}`);
+      const response = await axios.get(`https://myscocialmedia-node-js-mysql2.onrender.com/friendProfileInfo/${id}`);
       const { user_name, description } = response.data[0];
       setProfileName(user_name || "");
       setProfileDesc(description || "");
@@ -48,8 +48,8 @@ const {id}=useParams()
   // Fetch profile images
   async function getProfileImages() {
     try {
-      console.log(id)
-      const response = await axios.get(`http://localhost:3300/friendProfileImages/${id}`);
+  
+      const response = await axios.get(`https://myscocialmedia-node-js-mysql2.onrender.com/friendProfileImages/${id}`);
       response.data.forEach((val) => {
         if (val.image_type === "cover") {
           setCoverImage(val.image_url);
@@ -65,8 +65,8 @@ const {id}=useParams()
   // Check if the current user is following this friend
   async function checkIfFollowing() {
     try {
-      const response = await axios.get(`http://localhost:3300/isFollowing?token=${token}&id=${id}`);
-      console.log(response.data)
+      const response = await axios.get(`https://myscocialmedia-node-js-mysql2.onrender.com/isFollowing?token=${token}&id=${id}`);
+   
       setIsFollowing(response.data); // Assuming server returns { isFollowing: true/false }
     } catch (error) {
       console.error("Error checking follow status:", error);
@@ -77,7 +77,7 @@ const {id}=useParams()
   const toggleFollow = async () => {
     try {
       const action = isFollowing ? "unfollow" : "follow";
-      const response = await axios.post(`http://localhost:3300/${action}Friend`, {
+      const response = await axios.post(`https://myscocialmedia-node-js-mysql2.onrender.com/${action}Friend`, {
         token,
         Id: id, // Assuming profileId is profileName for now
       });

@@ -1,0 +1,64 @@
+.groups {
+    padding: 20px;
+    flex: 9;
+  }
+  .gropuMainContainer{
+    display: flex;
+    
+  }
+  
+  .groupContainer {
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .groupItem {
+   
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    width: calc(33.33% - 20px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .groupItem:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .groupItem h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #007bff;
+  }
+  
+  .groupItem p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .groupImage {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .groupItem {
+      width: calc(50% - 20px); /* Two items per row on smaller screens */
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .groupItem {
+      width: 100%; /* One item per row on very small screens */
+    }
+  }
+  

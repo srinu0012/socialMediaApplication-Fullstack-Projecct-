@@ -23,7 +23,7 @@ function ProfileFeed({image_url}) {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get(`http://localhost:3300/Profileposts/${localStorage.getItem("token")}`); // Replace with your API URL
+      const response = await axios.get(`https://myscocialmedia-node-js-mysql2.onrender.com/Profileposts/${localStorage.getItem("token")}`); // Replace with your API URL
       setPosts(response.data);
     } catch (error) {
       console.error("Error fetching posts:", error);
@@ -32,7 +32,7 @@ function ProfileFeed({image_url}) {
 
   const handleNewPost = async (newPost) => {
     try {
-      const response = await axios.post("http://localhost:3300/posts", newPost); // Replace with your API URL
+      const response = await axios.post("https://myscocialmedia-node-js-mysql2.onrender.com/posts", newPost); // Replace with your API URL
       setPosts((prevPosts) => [response.data, ...prevPosts]); // Add the new post to the top of the list
     } catch (error) {
       console.error("Error adding new post:", error);

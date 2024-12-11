@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import Draggable from "react-draggable";
 import "./chat.css";
 
 function Chatapp({ className, chatUsers, onClose }) {
+  const draggableRef = useRef(null);
   return (
-    <Draggable >
-    <div className={`chatContainer ${className}`}>
+    <Draggable nodeRef={draggableRef}>
+    <div ref={draggableRef} className={`chatContainer ${className}`}>
       <div className="chatHeader">
         <span className="chatTitle">Chat</span>
         <button className="chatCloseButton" onClick={onClose}>X</button>

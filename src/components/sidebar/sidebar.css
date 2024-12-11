@@ -3,6 +3,7 @@
     height: calc(100vh - 50px);
     overflow-y: scroll;
     position: relative;
+
   }
   
   .sidebarWraper {
@@ -85,12 +86,17 @@
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+    z-index: 10000;
   }
   
   .scrollTopBtn:hover {
     background-color: #0056b3;
   }
   
+  .link{
+    list-style: none;
+    color:black;
+  }
   /* Active Item Highlight */
   .sidebarListItem.active {
     background-color: #dbe4e4;

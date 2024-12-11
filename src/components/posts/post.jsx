@@ -21,7 +21,7 @@ function Post({ post }) {
   useEffect(() => {
     if (showComments) {
       axios
-        .get(`http://localhost:3300/comments/${post.post_id}`)
+        .get(`https://myscocialmedia-node-js-mysql2.onrender.com/comments/${post.post_id}`)
         .then((response) => {
           setComments(response.data);
         })
@@ -33,14 +33,14 @@ function Post({ post }) {
   function handleLike() {
     setIsLiked(!isLiked);
     setLike(isLiked ? like - 1 : like + 1);
-    axios.post(`http://localhost:3300/setlike/${post.post_id}?type=${isLiked ? "sub" : "add"}`);
+    axios.post(`https://myscocialmedia-node-js-mysql2.onrender.com/setlike/${post.post_id}?type=${isLiked ? "sub" : "add"}`);
   }
 
   // Handle thumbs-up button click
   function handleThumbUp() {
     setIsThumbUp(!isThumbUp);
     setLike(isThumbUp ? like - 1 : like + 1);
-    axios.post(`http://localhost:3300/setlike/${post.post_id}?type=${isThumbUp ? "sub" : "add"}`);
+    axios.post(`https://myscocialmedia-node-js-mysql2.onrender.com/setlike/${post.post_id}?type=${isThumbUp ? "sub" : "add"}`);
   }
 
   // Add a new comment
@@ -49,7 +49,7 @@ function Post({ post }) {
     if (!newComment.trim()) return;
 
     axios
-      .post(`http://localhost:3300/comments/${post.post_id}`, {
+      .post(`https://myscocialmedia-node-js-mysql2.onrender.com/comments/${post.post_id}`, {
         token: localStorage.getItem("token"), // Replace with the logged-in user's name
         text: newComment,
       })
