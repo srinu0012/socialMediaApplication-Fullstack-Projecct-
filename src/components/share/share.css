@@ -1,10 +1,11 @@
-.share {
+.share{
     width: 100%;
     height: auto; /* Adjust height to accommodate dynamic content */
     border-radius: 10px;
     -webkit-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.68);
     box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.68);
     padding-bottom: 20px; /* Add some padding for bottom content */
+    min-width: 230px;
 }
 
 .shareWraper {
@@ -156,29 +157,30 @@
     margin-top: 10px;
     display: flex;
     gap: 5px;
-  }
+}
   
-  .shareInputBox input {
+.shareInputBox input {
     flex: 1;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
+}
   
-  .shareInputBox button {
+.shareInputBox button {
     border: none;
     padding: 5px 10px;
     background-color: greenyellow;
     color: #000;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
   
-  .shareInputBox button:nth-child(2) {
+.shareInputBox button:nth-child(2) {
     background-color: tomato;
     color: #fff;
-  }
-  .suggestionsList {
+}
+
+.suggestionsList {
     list-style: none;
     margin: 5px 0;
     padding: 0;
@@ -190,15 +192,168 @@
     max-height: 150px;
     overflow-y: auto;
     border-radius: 5px;
-  }
+}
   
-  .suggestionsList li {
-    
+.suggestionsList li {
     padding: 5px 10px;
     cursor: pointer;
-  }
+}
   
-  .suggestionsList li:hover {
+.suggestionsList li:hover {
     background-color: #f0f0f0;
-  }
-  
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .share {
+        min-width: 100%;
+    }
+
+    .shareWraper {
+        padding: 15px;
+    }
+
+    .shareProfileImg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .shareInput {
+        width: 70%;
+    }
+
+    .shareBottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .shareOptions {
+        margin-left: 0;
+    }
+
+    .shareOption {
+        margin-right: 10px;
+    }
+
+    .shareButton {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .imagePreviewContainer {
+        width: 80px;
+        height: 80px;
+    }
+
+    .suggestionsList {
+        width: 100%;
+        max-height: 120px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .share {
+        min-width: 100%;
+    }
+
+    .shareWraper {
+        padding: 10px;
+    }
+
+    .shareProfileImg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .shareInput {
+        width: 60%;
+    }
+
+    .shareBottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .shareOptions {
+        margin-left: 0;
+    }
+
+    .shareOption {
+        margin-right: 10px;
+    }
+
+    .shareButton {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .imagePreviewContainer {
+        width: 60px;
+        height: 60px;
+    }
+
+    .suggestionsList {
+        width: 100%;
+        max-height: 100px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .share {
+        min-width: 100%;
+        padding: 10px;
+    }
+
+    .shareProfileImg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .shareInput {
+        width: 50%;
+    }
+
+    .shareBottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .shareOptions {
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .shareOption {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .shareButton {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .imagePreviewContainer {
+        width: 50px;
+        height: 50px;
+    }
+
+    .suggestionsList {
+        width: 100%;
+        max-height: 80px;
+    }
+
+    .shareInputBox {
+        flex-direction: column;
+    }
+
+    .shareInputBox input {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .shareInputBox button {
+        width: 100%;
+        margin-top: 5px;
+    }
+}

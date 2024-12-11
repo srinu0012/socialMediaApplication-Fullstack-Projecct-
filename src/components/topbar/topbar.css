@@ -10,8 +10,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-
-.faviconimage{
+.faviconimage {
    width: 2rem;
 }
 
@@ -26,6 +25,7 @@ body {
    top: 0;
    z-index: 10;
    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   min-width: 230px;
 }
 
 /* Logo */
@@ -151,7 +151,7 @@ body {
 }
 
 /* Logout Button */
-.logoutButton{
+.logoutButton {
    background-color: transparent;
    margin-left: 20px;
    border: 2px solid #fff;
@@ -160,7 +160,6 @@ body {
    border-radius: 20px;
    font-size: 14px;
    cursor: pointer;
-
    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -230,17 +229,18 @@ body {
    background-color: #e2e6ea;
 }
 
-.topbarcenter{
+.topbarcenter {
   display: flex;
   align-items: center;
   gap: 25px;
-     }
-.TopbarmenuLink{
-      font-size: 18px;
-    text-decoration: none;
-    color: #f1f1f1;
-    transition: color 0.3s ease;
-    display: block;
+}
+
+.TopbarmenuLink {
+  font-size: 18px;
+  text-decoration: none;
+  color: #f1f1f1;
+  transition: color 0.3s ease;
+  display: block;
 }
 
 /* Fade-in Animation */
@@ -257,12 +257,10 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-
-   .topbarContainer{
+   .topbarContainer {
       height: 100px;
       align-items: center;
       justify-content: center;
-      /* height: auto; */
       padding: 10px;
    }
 
@@ -273,26 +271,26 @@ body {
       justify-content: center;
       margin-bottom: 10px;
    }
-   .topbarleft{
-    display: flex;
-    align-items: center;
-    justify-content:space-around;
-   }
 
+   .topbarleft {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+   }
 
    .searchbar {
       width: 100%;
       margin-left: 0;
    }
 
-   .topbarLogo{
+   .topbarLogo {
       font-size: 20px;
-     
    }
-   .TopbarmenuLink{
-    display: none;
+
+   .TopbarmenuLink {
+      display: none;
    }
-   
+
    .topbarIconItem {
       width: 30px;
       height: 30px;
@@ -303,16 +301,12 @@ body {
    }
 }
 
-
-/* Add this at the end of your existing CSS */
-
 /* Hamburger Menu for Mobile */
 .hamburger {
   display: none;
   cursor: pointer;
   font-size: 30px;
   color: white;
-
 }
 
 .menuOverlay {
@@ -371,8 +365,5 @@ body {
 
   .hamburger {
     display: block;
-   
   }
-
-  
 }
