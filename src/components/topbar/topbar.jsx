@@ -65,7 +65,9 @@ function handleSerach(e){
         <div className="hamburger" onClick={toggleMenu}>
           <MenuIcon />
         </div>
-        <div className="topbarlogo" >phtolio</div>
+        <div className="topbarlogo" >
+          <img src="/favicon.png" alt="image" className="faviconimage" />
+          phtolio</div>
       </div>
       <div className="topbarcenter">
         <div className="searchbar">

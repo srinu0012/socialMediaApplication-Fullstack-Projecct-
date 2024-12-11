@@ -10,6 +10,11 @@ body {
   font-family: Arial, sans-serif;
 }
 
+
+.faviconimage{
+   width: 2rem;
+}
+
 /* Topbar Container */
 .topbarContainer {
    width: 100vw;
