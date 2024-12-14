@@ -1,10 +1,12 @@
 import { EmojiEmotions, Label, Room } from "@mui/icons-material";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 import axios from "axios";
 import "./share.css";
+import LoadingSpinner from "../loading/loading";
 
-function Share({ image_url }) {
+function Share({ image_url, setPosts }) {
   const [description, setDescription] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [tags, setTags] = useState([]);
@@ -12,16 +14,20 @@ function Share({ image_url }) {
   const [feeling, setFeeling] = useState("");
   const [inputState, setInputState] = useState(null);
   const [inputValue, setInputValue] = useState("");
-  const [suggestions, setSuggestions] = useState([1]); // For dropdown suggestions
+  const [suggestions, setSuggestions] = useState([]); // For dropdown suggestions
   const [isLoading, setIsLoading] = useState(false); // Loading state for suggestions
+  const [previewImage, setPreviewImage] = useState(null); // For image preview
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       setSelectedFile(file);
+      const reader = new FileReader();
+      reader.onload = () => setPreviewImage(reader.result);
+      reader.readAsDataURL(file);
     }
   };
-  
+
   const handleOpenInput = (type) => {
     setInputState(type);
     setInputValue("");
@@ -46,7 +52,6 @@ function Share({ image_url }) {
     setInputState(null);
     setInputValue("");
     setSuggestions([]);
-    
   };
 
   const handleRemoveTag = (tagToRemove) => {
@@ -78,12 +83,12 @@ function Share({ image_url }) {
       });
 
       if (response.status === 200) {
-        alert("Post shared successfully!");
         setDescription("");
         setSelectedFile(null);
         setTags([]);
         setLocation("");
         setFeeling("");
+        setPreviewImage(null);
         window.location.reload();
       } else {
         alert("Failed to share the post. Please try again.");
@@ -118,9 +123,14 @@ function Share({ image_url }) {
     }
   };
 
+  const handleSuggestionClick = (suggestion) => {
+    setInputValue(suggestion.user_name);
+    handleAddInput(suggestion.user_name);
+  };
+
   return (
     <div className="share">
-      <div className="shareWraper">
+      <div className="shareWrapper">
         <div className="shareTop">
           <img className="shareProfileImg" src={image_url} alt="Profile" />
           <input
@@ -174,14 +184,12 @@ function Share({ image_url }) {
             <button onClick={handleCancelInput}>X</button>
             {inputState === "tag" && suggestions.length > 0 && (
               <ul className="suggestionsList">
-                
                 {isLoading ? (
                   <li>Loading...</li>
                 ) : (
                   suggestions.map((suggestion, index) => (
-                    <li key={index} onClick={() => handleAddInput(suggestion.value)}>
+                    <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
                       {suggestion.user_name}
-                      
                     </li>
                   ))
                 )}
@@ -189,15 +197,18 @@ function Share({ image_url }) {
             )}
           </div>
         )}
+        {previewImage && <img src={previewImage} alt="Preview" className="previewImage" />}
         <div className="shareExtras">
           {tags.length > 0 && (
             <div className="shareTags">
               <strong>Tags:</strong>
-              {tags.map((tag, index) => (
-                <span key={index} className="tagItem">
-                  {tag} <button onClick={() => handleRemoveTag(tag)}>x</button>
-                </span>
-              ))}
+              <div className="tagList">
+                {tags.map((tag, index) => (
+                  <span key={index} className="tagItem">
+                    {tag} <button onClick={() => handleRemoveTag(tag)}>x</button>
+                  </span>
+                ))}
+              </div>
             </div>
           )}
           {location && (

@@ -34,6 +34,7 @@ function ProfileFeed({image_url}) {
     try {
       const response = await axios.post("https://myscocialmedia-node-js-mysql2.onrender.com/posts", newPost); // Replace with your API URL
       setPosts((prevPosts) => [response.data, ...prevPosts]); // Add the new post to the top of the list
+      console.log(response.data)
     } catch (error) {
       console.error("Error adding new post:", error);
     }

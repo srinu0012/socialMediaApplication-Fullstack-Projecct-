@@ -61,11 +61,11 @@ function Feed({ image_url,search }) {
 
         
         {/* Share Component for adding a new post */}
-        <Share image_url={image_url} onNewPost={handleNewPost} key={555}/>
+        <Share image_url={image_url} onNewPost={handleNewPost} key={555} setPosts={setPosts}/>
        
         {/* Render Posts */}
         { posts.map((val,ind) => (
-          <Post key={ind} post={val} />
+          <Post key={ind} post={val}  />
         ))}
 
       

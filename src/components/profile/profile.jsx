@@ -32,13 +32,15 @@ function Profile() {
 // upload images
 
 const handleImageUpload = async (e, type) => {
+  
   const file = e.target.files[0];
   if (!file) return;
 
   const formData = new FormData();
-  formData.append("image", file);
+  formData.append("file", file);
   formData.append("type", type);
   formData.append("token", token);
+
 
   try {
     const response = await fetch("https://myscocialmedia-node-js-mysql2.onrender.com/upload", {
@@ -61,7 +63,6 @@ const handleImageUpload = async (e, type) => {
   }
 };
 
-  // Fetch profile info (name and description)
   async function getProfileInfo() {
     try {
       const response = await axios.get(`https://myscocialmedia-node-js-mysql2.onrender.com/profileInfo/${token}`);
