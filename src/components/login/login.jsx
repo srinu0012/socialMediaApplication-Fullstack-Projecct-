@@ -2,11 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import "./login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../loading/loading";
 function Login() {
 const registerError=useRef("")
 const loginError=useRef("")
 
+
 const navigate =useNavigate()
+const [isloading,setisloading]=useState(false)
 useEffect(()=>{
   const token=localStorage.getItem('token')
   if(token){
@@ -63,6 +66,7 @@ function loginsubmit(e){
   async function getdetails(params) {
     
     try{
+      setisloading(true)
       let data= await axios.post("https://myscocialmedia-node-js-mysql2.onrender.com/login",{
         "userName":e.target[0].value,
         "password":e.target[1].value
@@ -75,14 +79,17 @@ function loginsubmit(e){
     const token=localStorage.getItem('token')
  
     if(token){
+      setisloading(false)
       navigate("/Home")
     }
    }else{
+    setisloading(false)
     loginError.current.innerText=data.data
    }
 
     }catch(err){
       e.preventDefault()
+      setisloading(false)
       loginError.current.classList="registerError"
       loginError.current.innerText="invalid details"
       // console.log(err)
@@ -196,7 +203,10 @@ function loginsubmit(e){
             </div>
           </div>
         </div>
-      </div>
+      </div>{
+        isloading?<LoadingSpinner />:null
+      }
+
     </>
   );
 }
