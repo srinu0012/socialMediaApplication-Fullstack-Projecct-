@@ -7,6 +7,9 @@
     cursor: pointer;
     font-size: 16px;
     margin-top: 20px;
+    text-align: center;
+    margin-left: 50%;
+    translate: -50%;
   }
   
   .followButton:hover {
