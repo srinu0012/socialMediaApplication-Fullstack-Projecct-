@@ -81,7 +81,7 @@ const cancelLogout = () => {
             onClick={() => handleActiveItem("feed")}
           >
             <RssFeedIcon className="sidebarIcon" />
-            <span className="sidebarLIstItemText">feed</span>
+            <span className="sidebarLIstItemText">Feed</span>
           </li>
           <li
             className={`sidebarListItem ${activeItem === "chats" ? "active" : ""}`}
@@ -153,6 +153,7 @@ const cancelLogout = () => {
           {showAllFriends ? "Show Less" : "Show More"}
         </button>
         <hr className="sidebarHr" />
+        <h3 className="closefreindsHeading">Close Friends</h3>
         <ul className="sidebarFriendList">
           {friends.map((val, ind) => {
             return <Closefriend key={ind} data={val} />;

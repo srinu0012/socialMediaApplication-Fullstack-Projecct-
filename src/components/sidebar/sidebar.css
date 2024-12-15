@@ -3,6 +3,7 @@
     height: calc(100vh - 50px);
     overflow-y: scroll;
     position: relative;
+    /* box-shadow: 1px 0px 2px black; */
 
   }
   
@@ -14,6 +15,14 @@
     padding: 0;
     margin: 0;
     list-style: none;
+  }
+  .closefreindsHeading{
+    text-align: center;
+    font-size: 28px;
+    background-color: #007bff;
+    border-radius: 8px;
+    color: #f1f1f1;
+    margin-bottom: 10px;
   }
   
   .sidebarListItem {

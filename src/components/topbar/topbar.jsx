@@ -144,8 +144,12 @@ function handleSerach(e){
               <Link to="/Home" className="menuLink" onClick={toggleMenu}>Home</Link>
               <Link to="/Timeline" className="menuLink" onClick={toggleMenu}>Timeline</Link>
               <Link to="/Home/Profile" className="menuLink"> Profile</Link>
+              <Link to="/Home/Events" className="menuLink"> Events</Link>
+              <Link to="/Home/Groups" className="menuLink"> Groups</Link>
+              <Link to="/Home/Jobs" className="menuLink"> Jobs</Link>
+              
               <p onClick={toggleChat}>Chat</p>
-              <button onClick={logoutHandler} className="menuLink">Logout</button>
+              <button onClick={logoutHandler} className="menuLink btn">Logout</button>
             </div>
           </div>
         </div>
